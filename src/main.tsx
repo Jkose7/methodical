@@ -2,7 +2,6 @@ import { createRoot } from 'react-dom/client'
 
 // styles
 import '@progress/kendo-theme-default/dist/default-main-dark.css';
-import './App.css';
 import './index.css'
 // React Router
 import { BrowserRouter, Routes, Route } from 'react-router'
