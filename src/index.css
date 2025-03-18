@@ -97,14 +97,14 @@ button:hover {
 }
 
 .layout-shader{
-  --saturate: 10;
+  --saturate: 1;
   --sepia: 1;
 
+  filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(180deg);
   place-content: center;
   background-size: cover;
   overflow: hidden;
   background-image: var(--img-1);
-  animation: hue 20s linear infinite;
 
   > * { z-index: 3; }
   
@@ -120,14 +120,14 @@ button:hover {
   }
   
   &::before {
-    mix-blend-mode: multiply;
+    mix-blend-mode: darken;
     animation-duration: calc(2s * var(--sped));
     background-image: var(--img-1);
   }
   
   &::after {
     z-index: 2;
-    mix-blend-mode: hard-light;
+    mix-blend-mode: soft-light;
     animation-direction: reverse;
     animation-duration: calc(2.5s * var(--sped));
     background-image: var(--img-1);
@@ -137,11 +137,11 @@ button:hover {
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
-
-@keyframes hue {
+/* hue rotation for change color */
+/* @keyframes hue {
   0% { filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(180deg); }
   100% { filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(180deg); }
-}
+} */
 
 @media (max-width: 768px) {
   h1 {
