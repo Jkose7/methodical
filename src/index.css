@@ -33,7 +33,7 @@ html {
   text-wrap: balance;
 }
 
-.layout-shader {
+.layout-shader-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -63,13 +63,15 @@ html {
   scroll-behavior: smooth;
 
 }
+
 .chat-messages::-webkit-scrollbar {
-  width: 5px;      
+  width: 5px;
 }
+
 .chat-messages::-webkit-scrollbar-thumb {
-  background-color: white;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid var(--purple);  /* creates padding around scroll thumb */
+  background-color: white;
+  border-radius: 20px;
+  border: 3px solid var(--purple);
 }
 
 .chat-message {
@@ -82,14 +84,30 @@ html {
   word-break: break-word;
 }
 
+.chat-respose-loading {
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    border-radius: 22px;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+
+    > div {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
 .user-message {
-  align-self: flex-end;
   border-top-right-radius: 5px;
   background-color: var(--dark-secondary);
 }
 
 .bot-message {
-  align-self: flex-start;
   border-bottom-left-radius: 5px;
   background-color: var(--dark-primary);
 }
@@ -119,15 +137,17 @@ html {
   }
 }
 
-.layout-shader {
+.shader {
   --saturate: 10;
   --sepia: 1;
+  --hue-start: 200deg;
+  --hue-end: 200deg;
 
   place-content: center;
-  filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(200deg);
   background-size: cover;
   overflow: hidden;
   background-image: var(--img-1);
+  animation: hue 20s linear infinite;
 
   >* {
     z-index: 3;
@@ -158,6 +178,24 @@ html {
     animation-duration: calc(2.5s * var(--sped));
     background-image: invert var(--img-1);
   }
+
+  &.chat-response-loading-shader {
+    --speed: 1;
+    --saturate: 0;
+    --sepia: 20;
+
+    color: var(--white);
+    animation: hue calc(1s * var(--speed)) infinite linear;
+
+    &::before {
+      mix-blend-mode: color-burn;
+      animation-direction: alternate-reverse;
+    }
+
+    &::after {
+      mix-blend-mode: darken;
+    }
+  }
 }
 
 @keyframes spin {
@@ -167,18 +205,25 @@ html {
 }
 
 /* hue rotation for change color */
-/* @keyframes hue {
-  0% { filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(180deg); }
-  100% { filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(180deg); }
-} */
+@keyframes hue {
+  0% {
+    filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(var(--hue-start));
+  }
+
+  100% {
+    filter: Saturate(var(--saturate)) Sepia(var(--sepia)) hue-rotate(var(--hue-end));
+  }
+}
 
 @media (max-width: 768px) {
   h1 {
     font-size: 2.2em;
   }
+
   h2 {
     font-size: 2em
   }
+
   .layout-shader {
     padding: 1rem 10%;
   }
