@@ -6,7 +6,7 @@ import './index.css'
 // React Router
 import { BrowserRouter, Routes, Route } from 'react-router'
 // Components
-import { Chat } from './components/Chat.tsx'
+import { Chat } from './components/chat/Chat.tsx'
 import { Project } from './components/Project.tsx'
 import { Projects } from './components/Projects.tsx'
 

@@ -7,6 +7,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --kendo-font-family: 'Funnel Display', sans-serif;
+  font-family: 'Funnel Display', sans-serif;
+  --kendo-paragraph-line-height: 25px;
 
   --dark-primary: #333;
   --dark-secondary: #1a1a1a;
@@ -23,6 +25,13 @@
   box-sizing: border-box;
 }
 
+ol, ul{
+  line-height: 25px;
+  padding-left: 1.5em;
+  padding-bottom: 0.5rem; 
+}
+
+
 body,
 html {
   text-align: center;
@@ -37,7 +46,7 @@ html {
   position: absolute;
   height: 100%;
   width: 100%;
-  padding: 1rem 15%;
+  padding: 1rem 20%;
 }
 
 /* Chat Planner */
@@ -45,12 +54,11 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   height: 100%;
   width: 100%;
   position: relative;
   overflow: hidden;
-  transition: all 0.5 ease;
 }
 
 .chat-messages {
@@ -61,7 +69,6 @@ html {
   gap: 0.5rem;
   padding-right: 1rem;
   scroll-behavior: smooth;
-
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -116,7 +123,6 @@ html {
   display: flex;
   width: 100%;
   gap: 0.5rem;
-
 }
 
 .chat-textarea-icons {
@@ -124,15 +130,16 @@ html {
   flex-direction: column;
   align-items: center;
   height: 100%;
-  gap: 0.5rem;
   color: var(--white);
 
-  &>.k-svg-icon {
-    transition: all 0.2s ease;
-    rotate: -90deg;
-  }
+}
 
-  &>.k-svg-icon:hover {
+.paper-plane-icon{
+  transition: all 0.2s ease;
+  rotate: -90deg;
+  margin-bottom: 0.5rem;
+
+  &:hover {
     opacity: 0.5;
   }
 }
